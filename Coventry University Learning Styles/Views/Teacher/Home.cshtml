@@ -1,0 +1,28 @@
+﻿@model TeacherHomeViewModel
+
+@using Coventry_University_Learning_Styles.Models
+
+@{
+    ViewBag.Title = "Coventry University Learning Styles";
+}
+
+<div class="jumbotron">
+    <h1>
+        Coventry University Learning Styles
+    </h1>
+
+    <br />
+
+    <p>
+        Welcome, please select the class you are currently teaching or would like to see a breakdown for.
+    </p>
+
+    <br />
+
+    @foreach (var item in Model.ClassCodes)
+    {
+        @Html.ActionLink(item.Text, "Home", new { ClassCodeID = item.Value }, new { @class = "btn btn-success" }) <span> </span>
+    }
+
+</div>
+

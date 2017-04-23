@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b775ef9f90bf45ec9b967466e59173c7" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="covunilsdbModel.Age" Width="1.5" PointX="1.25" PointY="3.375" />
+        <EntityTypeShape EntityType="covunilsdbModel.ClassCode" Width="1.5" PointX="1.75" PointY="5.75" />
+        <EntityTypeShape EntityType="covunilsdbModel.Ethnicity" Width="1.5" PointX="4" PointY="1.125" />
+        <EntityTypeShape EntityType="covunilsdbModel.Gender" Width="1.5" PointX="6.125" PointY="7" />
+        <EntityTypeShape EntityType="covunilsdbModel.IndividualSession" Width="1.5" PointX="4" PointY="3.875" />
+        <EntityTypeShape EntityType="covunilsdbModel.SessionResult" Width="1.5" PointX="6.5" PointY="3" />
+        <AssociationConnector Association="covunilsdbModel.FK_IndividualSessions_Ages" />
+        <AssociationConnector Association="covunilsdbModel.FK_IndividualSessions_ClassCodes" />
+        <AssociationConnector Association="covunilsdbModel.FK_IndividualSessions_Ethnicities" />
+        <AssociationConnector Association="covunilsdbModel.FK_IndividualSessions_Genders" />
+        <AssociationConnector Association="covunilsdbModel.FK_SessionResults_IndividualSessions" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="covunilsdbModel.AgeResults" />
+        <AssociationConnector Association="covunilsdbModel.EthnicityResults" />
+        <AssociationConnector Association="covunilsdbModel.GenderResults" ManuallyRouted="false" >
+        </AssociationConnector>
+        <EntityTypeShape EntityType="covunilsdbModel.LearningDifficulty" Width="1.5" PointX="8.5" PointY="9.5" />
+        <EntityTypeShape EntityType="covunilsdbModel.StudentLearningDifficulty" Width="1.5" PointX="6.125" PointY="9.25" />
+        <EntityTypeShape EntityType="covunilsdbModel.Student" Width="1.5" PointX="3.875" PointY="9.125" />
+        <AssociationConnector Association="covunilsdbModel.FK_Students_ClassCodes" />
+        <AssociationConnector Association="covunilsdbModel.FK_StudentLearningDifficulties_LearningDifficulties" />
+        <AssociationConnector Association="covunilsdbModel.FK_StudentLearningDifficulties_Students" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

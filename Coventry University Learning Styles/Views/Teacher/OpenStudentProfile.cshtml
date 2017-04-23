@@ -1,0 +1,54 @@
+﻿@model StudentProfileViewModel
+
+@using Coventry_University_Learning_Styles.Models
+
+@{
+    ViewBag.Title = "Student Profile";
+}
+
+<div class="jumbotron">
+    <fieldset>
+        <legend>Student Profiles</legend>
+        <div style="text-align: center; font-size: small">
+            <table>
+                <tr>
+                    <th>
+                        Student                    
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.Raw(Model.Student.FirstName + " " + Model.Student.LastName)
+                    </td>
+                    <td>
+                        @Html.Raw(Model.Student.Email)
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <br />
+
+        <legend>Learning Difficulties</legend>
+        <div style="text-align: center; font-size: small">
+            <table>
+                <tr>
+                    <th>
+                        Learning Difficulty
+                    </th>
+                </tr>
+                @foreach (LearningDifficulty LearningDifficulty in Model.LearningDifficulties) 
+                {
+                    <tr>
+                        <td>
+                            @Html.Raw(LearningDifficulty.LearningDifficulty1)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </fieldset>
+</div>

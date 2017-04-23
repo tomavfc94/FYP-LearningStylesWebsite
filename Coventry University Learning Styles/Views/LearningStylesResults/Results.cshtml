@@ -1,0 +1,84 @@
+﻿@model UserSessionResults 
+
+@using Coventry_University_Learning_Styles.Models;
+
+@{
+    ViewBag.Title = "Coventry University Learning Styles Results";
+}
+
+@using (Html.BeginForm("Finish", "LearningStylesResults", Model))
+{
+    <div class="jumbotron">
+
+        <h1>Learning Styles Results</h1>
+
+        <br />
+
+        <img src="@Url.Action("DrawLearningStylesBarChart", new { TotalAuralPercentage = Model.AuralPercent, TotalKineastheticPercentage = Model.KineastheticPercent, TotalReadWritePercentage = Model.ReadWritePercent, TotalVisualPercentage = Model.VisualPercent })" />
+        <img src="@Url.Action("DrawLearningStylesLineChart", new { TotalAuralPercentage = Model.AuralPercent, TotalKineastheticPercentage = Model.KineastheticPercent, TotalReadWritePercentage = Model.ReadWritePercent, TotalVisualPercentage = Model.VisualPercent })" />
+
+        <br />
+
+        <div style="padding-left:190px">
+            <img src="@Url.Action("DrawLearningStylesPieChart", new { TotalAuralPercentage = Model.AuralPercent, TotalKineastheticPercentage = Model.KineastheticPercent, TotalReadWritePercentage = Model.ReadWritePercent, TotalVisualPercentage = Model.VisualPercent })" />
+        </div>
+
+        <br />
+
+        <fieldset>
+            <legend>Recommendations</legend>
+            <div style="text-align: center; font-size: small">
+                <table>
+                    <tr>
+                        <th>
+                            Aural
+                        </th>
+                        <td>
+                            @Html.Raw(string.Format("{0:f2}%", Model.AuralPercent))
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Kineasthetic
+                        </th>
+                        <td>
+                            @Html.Raw(string.Format("{0:f2}%", Model.KineastheticPercent))
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Read/Write
+                        </th>
+                        <td>
+                            @Html.Raw(string.Format("{0:f2}%", Model.ReadWritePercent))
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Visual
+                        </th>
+                        <td>
+                            @Html.Raw(string.Format("{0:f2}%", Model.VisualPercent))
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <p></p>
+            <p></p>
+
+            <div style="font-size: medium">
+                @Html.Raw(Model.BestLearningStyle)
+            </div>
+        </fieldset>
+
+        <hr>
+
+        <br />
+
+        @using (Html.BeginForm("Home", "Index", FormMethod.Get, new { }))
+        {
+            <button type="submit" id="Save"><img src="~/Content/Finish.png" /></button>
+        }    
+    </div>
+}

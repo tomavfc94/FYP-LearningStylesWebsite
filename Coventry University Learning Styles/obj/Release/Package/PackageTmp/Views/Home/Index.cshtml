@@ -1,0 +1,26 @@
+﻿@using CULS.HtmlHelpers
+
+@{
+    ViewBag.Title = "Coventry University Learning Styles";
+}
+
+<div class="jumbotron">
+    <h1>Coventry University Learning Styles</h1>
+    
+    <br />
+    
+    <p>
+        Welcome, this is a survey designed to identify your learning styles and offer you recommendations to enhance your learning.
+    </p>
+
+    <br />
+        
+    <p>
+        All data collected is anonymous, with no personal data being collected. By continuing past this point you are agreeing to take part in the study.
+    </p>  
+       
+    <br />
+
+    @Html.ActionImage("~/Content/start_button.png", "Start Survey", "Survey", "LearningStylesSurvey", new { })
+
+</div>

@@ -1,0 +1,31 @@
+﻿@model IEnumerable<decimal>
+
+@{
+    string myTheme = @" <Chart BackColor=""#eeeeee"">
+                            <ChartAreas>
+                                <ChartArea Name=""Default"" BackColor=""Transparent""></ChartArea>
+                            </ChartAreas>
+                        </Chart> ";
+
+    //string myTheme = @"<Chart BackColor=""#D3DFF0"" BackGradientStyle=""TopBottom"" BackSecondaryColor=""D3DFF0"" BorderColor=""26, 59, 105"" BorderlineDashStyle=""Solid"" BorderWidth=""2"" Palette=""BrightPastel"">
+    //                        <ChartAreas>
+    //                            <ChartArea Name=""Default"" _Template_=""All"" BackColor=""Transparent"" BackGradientStyle=""TopBottom"" BackSecondaryColor=""Transparent"" BorderColor=""64, 64, 64, 64"" BorderDashStyle=""Solid"" ShadowColor=""Transparent""></ChartArea>
+    //                        </ChartAreas>
+
+    //                        <Legends>
+    //                            <Legend _Template_=""All"" BackColor=""Transparent"" Font=""Arial, 10pt, style=Bold"" IsTextAutoFit=""False""></Legend>
+    //                        </Legends>
+
+    //                        <BorderSkin SkinStyle=""Emboss""></BorderSkin>
+    //                    </Chart> ";
+}
+
+@{
+    Chart LearningStylesBarChart = new Chart(width: 500, height: 400, theme: myTheme)
+        .AddTitle("Learning Styles Bar Chart")
+        .AddSeries(
+            name: "Learning Style",
+            xValue: new[] { "Aural %", "Kineasthetic %", "Read/Write %", "Visual %" },
+            yValues: Model)
+        .Write();
+}

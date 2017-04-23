@@ -1,0 +1,131 @@
+﻿@model ClassResultsViewModel
+
+@using Coventry_University_Learning_Styles.Models
+
+@{
+    ViewBag.Title = "Coventry University Learning Live Results";
+}
+
+<div class="jumbotron">
+
+    <h1>Learning Styles Class Results</h1>
+
+    <br />
+
+    @if (Model != null)
+    {
+        <img src="@Url.Action("DrawLearningStylesBarChart", new { TotalAuralPercentage = Model.TotalAuralPercentage, TotalKineastheticPercentage = Model.TotalKineastheticPercentage, TotalReadWritePercentage = Model.TotalReadWritePercentage, TotalVisualPercentage = Model.TotalVisualPercentage })" />
+        <img src="@Url.Action("DrawLearningStylesLineChart", new { TotalAuralPercentage = Model.TotalAuralPercentage, TotalKineastheticPercentage = Model.TotalKineastheticPercentage, TotalReadWritePercentage = Model.TotalReadWritePercentage, TotalVisualPercentage = Model.TotalVisualPercentage })" />
+        
+        <br />
+        
+        <div style="padding-left:190px">
+            <img src="@Url.Action("DrawLearningStylesPieChart", new { TotalAuralPercentage = Model.TotalAuralPercentage, TotalKineastheticPercentage = Model.TotalKineastheticPercentage, TotalReadWritePercentage = Model.TotalReadWritePercentage, TotalVisualPercentage = Model.TotalVisualPercentage })" />
+        </div>
+
+        <hr />
+
+        <fieldset>
+            <legend>Recommendations</legend>
+            <div style="text-align: center; font-size: small">
+                <table>
+                    <tr>
+                        <th>
+                            Aural
+                        </th>
+                        <td>
+                            @Html.Raw(string.Format("{0:f2}%", Model.TotalAuralPercentage))
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Kineasthetic
+                        </th>
+                        <td>
+                            @Html.Raw(string.Format("{0:f2}%", Model.TotalKineastheticPercentage))
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Read/Write
+                        </th>
+                        <td>
+                            @Html.Raw(string.Format("{0:f2}%", Model.TotalReadWritePercentage))
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Visual
+                        </th>
+                        <td>
+                            @Html.Raw(string.Format("{0:f2}%", Model.TotalVisualPercentage))
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <br />
+
+            <div style="font-size: medium">
+                @Html.Raw(Model.ClassResult)
+            </div>
+        </fieldset>
+
+        <hr />
+
+        <fieldset>
+            <legend>Student Profiles</legend>
+            <div style="text-align: center; font-size: small">
+                <table>
+                    <tr>
+                        <th colspan="2">
+                            Student
+                        </th>
+                    </tr>
+                    @foreach (Student Student in Model.Students)
+                    {
+                        <tr>
+                            <td>
+                                @Html.ActionLink("Open Profile", "OpenStudentProfile", "Teacher", new { StudentID = Student.ID }, null)
+                            </td>
+                            <td>
+                                @Html.Raw(Student.FirstName + " " + Student.LastName)
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </fieldset>
+
+        <hr />
+
+        using (Html.BeginForm("Home", "Teacher", FormMethod.Get, new { }))
+        {
+            <fieldset>
+                <input type="submit" value="Finish" class="btn btn-finish" style="font-size:medium">
+            </fieldset>
+        }
+    }
+    else
+    {
+        <p>
+            There is currently no data avaliable for this class.
+        </p>
+        using (Html.BeginForm("Home", "Teacher", FormMethod.Get, new { }))
+        {
+            <fieldset>
+                <input type="submit" value="Finish" class="btn btn-finish" style="font-size:medium">
+            </fieldset>        
+        }
+    }
+
+    <br />
+
+    @using (Html.BeginForm("Survey", "LearningStylesSurvey", FormMethod.Get, new { }))
+    {
+        <p>
+            If you would like to attempt the survey yourself:
+        </p>
+        <input type="submit" value="Start Survey" class="btn btn-success" style="font-size:medium">
+    }
+</div>

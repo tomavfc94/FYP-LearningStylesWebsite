@@ -1,0 +1,431 @@
+﻿@model UserSession
+
+@using Coventry_University_Learning_Styles.Models;
+
+@{
+    ViewBag.Title = "Coventry University Learning Styles Survey";
+}
+
+@using (Html.BeginForm("Results", "LearningStylesResults", Model))
+{
+    <div class="jumbotron">
+        <h1>
+            Learning Styles Survey
+        </h1>
+
+        <br />
+
+        <p>
+            Thank you for agreeing to take part in this study.
+        </p>
+
+        <br />
+
+        <p>
+            All the following questions are mandatory.
+        </p>
+
+        <br />
+
+        <p>
+            The survey should only take 5-10 minutes to complete and then check your results.
+        </p>
+
+        <br />
+
+        <hr style="background:black; height:2px" />
+
+        <br />
+
+        <h2 style="text-align:center">
+            Quick Question Before You Start
+        </h2>
+
+        <br />
+
+        <p>
+            Please Choose The Current Session? @Html.DropDownListFor(m => m.ClassCodeID, Model.ClassCodes, "Please Choose One...", new { style = "font-size:medium" })
+        </p>
+
+        <br />
+
+        <hr style="background:black; height:2px" />
+
+        <br />
+
+        <h2 style="text-align:center">
+            Learning Style Questions
+        </h2>
+
+        <br />
+
+        <p>
+            You have finished a competition or test and would like some feedback. You would like to have feedback:        
+        </p>
+        
+        <br />
+
+        <div style="padding-left:50px; font-size:medium">
+            <p>
+                @Html.CheckBoxFor(model => model.Q1_Visual) a)  using graphs showing what you had achieved.
+            </p>
+            <p>
+                @Html.CheckBoxFor(model => model.Q1_Kineasthetic) b)  using examples from what you have done.
+            </p>
+            <p>
+                @Html.CheckBoxFor(model => model.Q1_ReadWrite) c)  using a written description of your results.
+            </p>
+            <p>
+                @Html.CheckBoxFor(model => model.Q1_Aural) d)  from somebody who talks it through with you.
+            </p>
+        </div>
+        <br />
+
+        <p>
+            You are going to choose food at a restaurant or cafe. You would:
+        </p>
+
+        <br />
+
+        <div style="padding-left:50px; font-size:medium">
+            <p>
+                @Html.CheckBoxFor(model => model.Q2_Kineasthetic) a)  choose something that you have had there before.
+            </p>
+            <p>
+                @Html.CheckBoxFor(model => model.Q2_Aural) b)  listen to the waiter or ask friends to recommend choices.
+            </p>
+            <p>
+                @Html.CheckBoxFor(model => model.Q2_Visual) c)  look at what others are eating or look at pictures of each dish.
+            </p>
+            <p>
+                @Html.CheckBoxFor(model => model.Q2_ReadWrite) d)  choose from the descriptions in the menu.
+            </p>
+        </div>
+
+        <br />
+
+        <p>
+            You are helping someone who wants to go to your airport, the centre of town or railway station. You would:
+        </p>
+
+        <br />
+
+        <div style="padding-left:50px; font-size:medium">
+            <p>
+                @Html.CheckBoxFor(model => model.Q3_Aural) a)  tell her the directions.
+            </p>
+            <p>
+                @Html.CheckBoxFor(model => model.Q3_Kineasthetic) b)  go with her.
+            </p>
+            <p>
+                @Html.CheckBoxFor(model => model.Q3_ReadWrite) c)  write down the directions.
+            </p>
+            <p>
+                @Html.CheckBoxFor(model => model.Q3_Visual) d)  draw, or show her a map, or give her a map.
+            </p>
+        </div>
+
+        <br />
+
+        <p>
+            You are going to cook something as a special treat. You would:
+        </p>
+
+        <br />
+
+        <div style="padding-left:50px; font-size:medium">
+            <p>
+                @Html.CheckBoxFor(model => model.Q4_ReadWrite) a)  use a cookbook where you know there is a good recipe.
+            </p>
+            <p>
+                @Html.CheckBoxFor(model => model.Q4_Kineasthetic) b)  cook something you know without the need for instructions.
+            </p>
+            <p>
+                @Html.CheckBoxFor(model => model.Q4_Aural) c)  ask friends for suggestions.
+            </p>
+            <p>
+                @Html.CheckBoxFor(model => model.Q4_Visual) d)  look on the Internet or in some cookbooks for ideas from the pictures.
+            </p>
+        </div>
+
+        <br />
+
+        <p>
+            Do you prefer a teacher or a presenter who uses?
+        </p>
+
+        <br />
+
+        <div style="padding-left:50px; font-size:medium">
+            <p>
+                @Html.CheckBoxFor(model => model.Q5_Visual) a)  diagrams, charts or graphs.
+            </p>
+            <p>
+                @Html.CheckBoxFor(model => model.Q5_Kineasthetic) b)  demonstrations, models or practical sessions.
+            </p>
+            <p>
+                @Html.CheckBoxFor(model => model.Q5_ReadWrite) c)  handouts, books, or readings.
+            </p>
+            <p>
+                @Html.CheckBoxFor(model => model.Q5_Aural) d)  question and answer, talk, group discussion, or guest speakers.
+            </p>
+        </div>
+
+        <br />
+
+        <p>
+            A website has a video showing how to make a special graph. There is a person speaking, some lists and words describing what to do and some diagrams. You would learn most from:
+        </p>
+
+        <br />
+
+        <div style="padding-left:50px; font-size:medium">
+            <p>
+                @Html.CheckBoxFor(model => model.Q6_Visual) a)  seeing the diagrams.
+            </p>
+            <p>
+                @Html.CheckBoxFor(model => model.Q6_Kineasthetic) b)  watching the actions.
+            </p>
+            <p>
+                @Html.CheckBoxFor(model => model.Q6_ReadWrite) c)  reading the words.
+            </p>
+            <p>
+                @Html.CheckBoxFor(model => model.Q6_Aural) d)  listening.
+            </p>
+        </div>
+
+        <br />
+
+        <p>
+            You are about to purchase a digital camera or mobile phone. Other than price, what would most influence your decision?
+        </p>
+
+        <br />
+
+        <div style="padding-left:50px; font-size:medium">
+            <p>
+                @Html.CheckBoxFor(model => model.Q7_ReadWrite) a)  reading the details or checking its features online.
+            </p>
+            <p>
+                @Html.CheckBoxFor(model => model.Q7_Kineasthetic) b)  trying or testing it.
+            </p>
+            <p>
+                @Html.CheckBoxFor(model => model.Q7_Visual) c)  it is a modern design and looks good.
+            </p>
+            <p>
+                @Html.CheckBoxFor(model => model.Q7_Aural) d)  the salesperson telling me about its features.
+            </p>
+        </div>
+
+        <br />
+
+        <p>
+            You have to make an important speech at a conference or special occasion. You would:
+        </p>
+
+        <br />
+
+        <div style="padding-left:50px; font-size:medium">
+            <p>
+                @Html.CheckBoxFor(model => model.Q8_Kineasthetic) a)  gather many examples and stories to make the talk real and practical.
+            </p>
+            <p>
+                @Html.CheckBoxFor(model => model.Q8_Visual) b)  make diagrams or get graphs to help explain things.
+            </p>
+            <p>
+                @Html.CheckBoxFor(model => model.Q8_ReadWrite) c)  write out your speech and learn from reading it over several times.
+            </p>
+            <p>
+                @Html.CheckBoxFor(model => model.Q8_Aural) d)  write a few key words and practice saying your speech over and over.
+            </p>
+        </div>
+
+        <br />
+
+        <p>
+            You are using a book, CD or website to learn how to take photos with your new digital camera. You would like to have:
+        </p>
+
+        <br />
+
+        <div style="padding-left:50px; font-size:medium">
+            <p>
+                @Html.CheckBoxFor(model => model.Q9_Aural) a)  a chance to ask questions and talk about the camera and its features.
+            </p>
+            <p>
+                @Html.CheckBoxFor(model => model.Q9_Kineasthetic) b)  diagrams showing the camera and what each part does.
+            </p>
+            <p>
+                @Html.CheckBoxFor(model => model.Q9_ReadWrite) c)  clear written instructions with lists and bullet points about what to do.
+            </p>
+            <p>
+                @Html.CheckBoxFor(model => model.Q9_Visual) d)  many examples of good and poor photos and how to improve them.
+            </p>
+        </div>
+
+        <br />
+
+        <p>
+            You are planning a vacation for a group. You want some feedback from them about the plan. You would:
+        </p>
+
+        <br />
+
+        <div style="padding-left:50px; font-size:medium">
+            <p>
+                @Html.CheckBoxFor(model => model.Q10_Visual) a)  use a map to show them the places.
+            </p>
+            <p>
+                @Html.CheckBoxFor(model => model.Q10_Aural) b)  phone, text or email them.
+            </p>
+            <p>
+                @Html.CheckBoxFor(model => model.Q10_Kineasthetic) c)   describe some of the highlights they will experience.
+            </p>
+            <p>
+                @Html.CheckBoxFor(model => model.Q10_ReadWrite) d)	give them a copy of the printed itinerary.
+            </p>
+        </div>
+
+        <br />
+
+        <p>
+            A group of tourists wants to learn about the parks or wildlife reserves in your area. You would:
+        </p>
+
+        <br />
+
+        <div style="padding-left:50px; font-size:medium">
+            <p>
+                @Html.CheckBoxFor(model => model.Q11_ReadWrite) a)	give them a book or pamphlets about the parks or wildlife reserves.
+            </p>
+            <p>
+                @Html.CheckBoxFor(model => model.Q11_Aural) b)	talk about, or arrange a talk for them about parks or wildlife reserves.
+            </p>
+            <p>
+                @Html.CheckBoxFor(model => model.Q11_Kineasthetic) c)   take them to a park or wildlife reserve and walk with them.
+            </p>
+            <p>
+                @Html.CheckBoxFor(model => model.Q11_Visual) d)	 show them maps and internet pictures.
+            </p>
+        </div>
+
+        <br />
+
+        <p>
+            I like websites that have:
+        </p>
+
+        <br />
+
+        <div style="padding-left:50px; font-size:medium">
+            <p>
+                @Html.CheckBoxFor(model => model.Q12_Kineasthetic) a)	things I can click on, shift or try.
+            </p>
+            <p>
+                @Html.CheckBoxFor(model => model.Q12_ReadWrite) b)	interesting written descriptions, lists and explanations.
+            </p>
+            <p>
+                @Html.CheckBoxFor(model => model.Q12_Visual) c)	interesting design and visual features.
+            </p>
+            <p>
+                @Html.CheckBoxFor(model => model.Q12_Aural) d)	audio channels where I can hear music, radio programs or interviews.
+            </p>
+        </div>
+
+        <br />
+
+        <p>
+            You want to learn a new program, skill or game on a computer. You would:
+        </p>
+
+        <br />
+
+        <div style="padding-left:50px; font-size:medium">
+            <p>
+                @Html.CheckBoxFor(model => model.Q13_ReadWrite) a)	read the written instructions that came with the program.
+            </p>
+            <p>
+                @Html.CheckBoxFor(model => model.Q13_Visual) b)	follow the diagrams in the book that came with it.
+            </p>
+            <p>
+                @Html.CheckBoxFor(model => model.Q13_Kineasthetic) c)   use the controls or keyboard.
+            </p>
+            <p>
+                @Html.CheckBoxFor(model => model.Q13_Aural) d)	talk with people who know about the program.
+            </p>
+        </div>
+
+        <br />
+
+        <p>
+            Remember a time when you learned how to do something new. Avoid choosing a physical skill, e.g. riding a bike. You learned best by:
+        </p>
+
+        <br />
+
+        <div style="padding-left:50px; font-size:medium">
+            <p>
+                @Html.CheckBoxFor(model => model.Q14_Aural) a)	listening to somebody explaining it and asking questions.
+            </p>
+            <p>
+                @Html.CheckBoxFor(model => model.Q14_Visual) b)	diagrams, maps, and charts - visual clues.
+            </p>
+            <p>
+                @Html.CheckBoxFor(model => model.Q14_Kineasthetic) c)	watching a demonstration.
+            </p>
+            <p>
+                @Html.CheckBoxFor(model => model.Q14_ReadWrite) d)  written instructions – e.g. a manual or book.
+            </p>
+        </div>
+
+        <br />
+
+        <p>
+            You have a problem with your heart. You would prefer that the doctor:
+        </p>
+
+        <br />
+
+        <div style="padding-left:50px; font-size:medium">
+            <p>
+                @Html.CheckBoxFor(model => model.Q15_ReadWrite) a)	gave you something to read to explain what was wrong.
+            </p>
+            <p>
+                @Html.CheckBoxFor(model => model.Q15_Visual) b)	showed you a diagram of what was wrong.
+            </p>
+            <p>
+                @Html.CheckBoxFor(model => model.Q15_Aural) c)	described what was wrong.
+            </p>
+            <p>
+                @Html.CheckBoxFor(model => model.Q15_Kineasthetic) d)	used a plastic model to show what was wrong. 
+            </p>
+        </div>
+
+        <br />
+
+        <p>
+            Other than price, what would most influence your decision to buy a new non-fiction book?
+        </p>
+
+        <br />
+
+        <div style="padding-left:50px; font-size:medium">
+            <p>
+                @Html.CheckBoxFor(model => model.Q16_ReadWrite) a)	quickly reading parts of it.
+            </p>
+            <p>
+                @Html.CheckBoxFor(model => model.Q16_Aural) b)	a friend talks about it and recommends it.
+            </p>
+            <p>
+                @Html.CheckBoxFor(model => model.Q16_Kineasthetic) c)	It has real-life stories, experiences and examples.
+            </p>
+            <p>
+                @Html.CheckBoxFor(model => model.Q16_Visual) d)	 The way it looks is appealing.
+            </p>
+        </div>
+
+        <br />
+
+        <button type="submit" id="Save"><img src="~/Content/Finish.png" /></button>
+    </div>
+}

@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="covunilsdbModelStoreContainer" CdmEntityContainer="covunilsdbEntities">
+    <EntitySetMapping Name="Ages">
+      <EntityTypeMapping TypeName="covunilsdbModel.Age">
+        <MappingFragment StoreEntitySet="Ages">
+          <ScalarProperty Name="AgeRange" ColumnName="Age" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClassCodes">
+      <EntityTypeMapping TypeName="covunilsdbModel.ClassCode">
+        <MappingFragment StoreEntitySet="ClassCodes">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ethnicities">
+      <EntityTypeMapping TypeName="covunilsdbModel.Ethnicity">
+        <MappingFragment StoreEntitySet="Ethnicities">
+          <ScalarProperty Name="EthnicityType" ColumnName="Ethnicity" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Genders">
+      <EntityTypeMapping TypeName="covunilsdbModel.Gender">
+        <MappingFragment StoreEntitySet="Genders">
+          <ScalarProperty Name="GenderType" ColumnName="Gender" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IndividualSessions">
+      <EntityTypeMapping TypeName="covunilsdbModel.IndividualSession">
+        <MappingFragment StoreEntitySet="IndividualSessions">
+          <ScalarProperty Name="KineastheticCount" ColumnName="KineastheticCount" />
+          <ScalarProperty Name="ReadWriteCount" ColumnName="ReadWriteCount" />
+          <ScalarProperty Name="AuralCount" ColumnName="AuralCount" />
+          <ScalarProperty Name="VisualCount" ColumnName="VisualCount" />
+          <ScalarProperty Name="EthinicityID" ColumnName="EthinicityID" />
+          <ScalarProperty Name="AgeID" ColumnName="AgeID" />
+          <ScalarProperty Name="GenderID" ColumnName="GenderID" />
+          <ScalarProperty Name="ClassCodeID" ColumnName="ClassCodeID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SessionResults">
+      <EntityTypeMapping TypeName="covunilsdbModel.SessionResult">
+        <MappingFragment StoreEntitySet="SessionResults">
+          <ScalarProperty Name="Satisfied" ColumnName="Satisfied" />
+          <ScalarProperty Name="KineastheticPercent" ColumnName="KineastheticPercent" />
+          <ScalarProperty Name="ReadWritePercent" ColumnName="ReadWritePercent" />
+          <ScalarProperty Name="AuralPercent" ColumnName="AuralPercent" />
+          <ScalarProperty Name="VisualPercent" ColumnName="VisualPercent" />
+          <ScalarProperty Name="Results" ColumnName="Results" />
+          <ScalarProperty Name="IndividualSessionID" ColumnName="IndividualSessionID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="AgeResults" TypeName="covunilsdbModel.AgeResults" StoreEntitySet="AgeResults">
+      <EndProperty Name="SessionResult">
+        <ScalarProperty Name="ID" ColumnName="SessionResultsID" />
+      </EndProperty>
+      <EndProperty Name="Age">
+        <ScalarProperty Name="ID" ColumnName="AgeID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EthnicityResults" TypeName="covunilsdbModel.EthnicityResults" StoreEntitySet="EthnicityResults">
+      <EndProperty Name="SessionResult">
+        <ScalarProperty Name="ID" ColumnName="SessionResultsID" />
+      </EndProperty>
+      <EndProperty Name="Ethnicity">
+        <ScalarProperty Name="ID" ColumnName="EthnicityID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GenderResults" TypeName="covunilsdbModel.GenderResults" StoreEntitySet="GenderResults">
+      <EndProperty Name="SessionResult">
+        <ScalarProperty Name="ID" ColumnName="SessionResultsID" />
+      </EndProperty>
+      <EndProperty Name="Gender">
+        <ScalarProperty Name="ID" ColumnName="GenderID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="LearningDifficulties">
+      <EntityTypeMapping TypeName="covunilsdbModel.LearningDifficulty">
+        <MappingFragment StoreEntitySet="LearningDifficulties">
+          <ScalarProperty Name="LearningDifficulty1" ColumnName="LearningDifficulty" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudentLearningDifficulties">
+      <EntityTypeMapping TypeName="covunilsdbModel.StudentLearningDifficulty">
+        <MappingFragment StoreEntitySet="StudentLearningDifficulties">
+          <ScalarProperty Name="LearningDifficultyID" ColumnName="LearningDifficultyID" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Students">
+      <EntityTypeMapping TypeName="covunilsdbModel.Student">
+        <MappingFragment StoreEntitySet="Students">
+          <ScalarProperty Name="ClassCodeID" ColumnName="ClassCodeID" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

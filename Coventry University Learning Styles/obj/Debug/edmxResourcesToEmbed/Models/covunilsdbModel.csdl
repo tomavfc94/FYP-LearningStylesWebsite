@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="covunilsdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="covunilsdbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Ages" EntityType="covunilsdbModel.Age" />
+    <EntitySet Name="ClassCodes" EntityType="covunilsdbModel.ClassCode" />
+    <EntitySet Name="Ethnicities" EntityType="covunilsdbModel.Ethnicity" />
+    <EntitySet Name="Genders" EntityType="covunilsdbModel.Gender" />
+    <EntitySet Name="IndividualSessions" EntityType="covunilsdbModel.IndividualSession" />
+    <EntitySet Name="SessionResults" EntityType="covunilsdbModel.SessionResult" />
+    <AssociationSet Name="FK_IndividualSessions_Ages" Association="covunilsdbModel.FK_IndividualSessions_Ages">
+      <End Role="Age" EntitySet="Ages" />
+      <End Role="IndividualSession" EntitySet="IndividualSessions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IndividualSessions_ClassCodes" Association="covunilsdbModel.FK_IndividualSessions_ClassCodes">
+      <End Role="ClassCode" EntitySet="ClassCodes" />
+      <End Role="IndividualSession" EntitySet="IndividualSessions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IndividualSessions_Ethnicities" Association="covunilsdbModel.FK_IndividualSessions_Ethnicities">
+      <End Role="Ethnicity" EntitySet="Ethnicities" />
+      <End Role="IndividualSession" EntitySet="IndividualSessions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IndividualSessions_Genders" Association="covunilsdbModel.FK_IndividualSessions_Genders">
+      <End Role="Gender" EntitySet="Genders" />
+      <End Role="IndividualSession" EntitySet="IndividualSessions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SessionResults_IndividualSessions" Association="covunilsdbModel.FK_SessionResults_IndividualSessions">
+      <End Role="IndividualSession" EntitySet="IndividualSessions" />
+      <End Role="SessionResult" EntitySet="SessionResults" />
+    </AssociationSet>
+    <AssociationSet Name="AgeResults" Association="covunilsdbModel.AgeResults">
+      <End Role="Age" EntitySet="Ages" />
+      <End Role="SessionResult" EntitySet="SessionResults" />
+    </AssociationSet>
+    <AssociationSet Name="EthnicityResults" Association="covunilsdbModel.EthnicityResults">
+      <End Role="Ethnicity" EntitySet="Ethnicities" />
+      <End Role="SessionResult" EntitySet="SessionResults" />
+    </AssociationSet>
+    <AssociationSet Name="GenderResults" Association="covunilsdbModel.GenderResults">
+      <End Role="Gender" EntitySet="Genders" />
+      <End Role="SessionResult" EntitySet="SessionResults" />
+    </AssociationSet>
+    <EntitySet Name="LearningDifficulties" EntityType="covunilsdbModel.LearningDifficulty" />
+    <EntitySet Name="StudentLearningDifficulties" EntityType="covunilsdbModel.StudentLearningDifficulty" />
+    <EntitySet Name="Students" EntityType="covunilsdbModel.Student" />
+    <AssociationSet Name="FK_Students_ClassCodes" Association="covunilsdbModel.FK_Students_ClassCodes">
+      <End Role="ClassCode" EntitySet="ClassCodes" />
+      <End Role="Student" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentLearningDifficulties_LearningDifficulties" Association="covunilsdbModel.FK_StudentLearningDifficulties_LearningDifficulties">
+      <End Role="LearningDifficulty" EntitySet="LearningDifficulties" />
+      <End Role="StudentLearningDifficulty" EntitySet="StudentLearningDifficulties" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentLearningDifficulties_Students" Association="covunilsdbModel.FK_StudentLearningDifficulties_Students">
+      <End Role="Student" EntitySet="Students" />
+      <End Role="StudentLearningDifficulty" EntitySet="StudentLearningDifficulties" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Age">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AgeRange" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="IndividualSessions" Relationship="covunilsdbModel.FK_IndividualSessions_Ages" FromRole="Age" ToRole="IndividualSession" />
+    <NavigationProperty Name="SessionResults" Relationship="covunilsdbModel.AgeResults" FromRole="Age" ToRole="SessionResult" />
+  </EntityType>
+  <EntityType Name="ClassCode">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="IndividualSessions" Relationship="covunilsdbModel.FK_IndividualSessions_ClassCodes" FromRole="ClassCode" ToRole="IndividualSession" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Students" Relationship="covunilsdbModel.FK_Students_ClassCodes" FromRole="ClassCode" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="Ethnicity">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EthnicityType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="IndividualSessions" Relationship="covunilsdbModel.FK_IndividualSessions_Ethnicities" FromRole="Ethnicity" ToRole="IndividualSession" />
+    <NavigationProperty Name="SessionResults" Relationship="covunilsdbModel.EthnicityResults" FromRole="Ethnicity" ToRole="SessionResult" />
+  </EntityType>
+  <EntityType Name="Gender">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GenderType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="IndividualSessions" Relationship="covunilsdbModel.FK_IndividualSessions_Genders" FromRole="Gender" ToRole="IndividualSession" />
+    <NavigationProperty Name="SessionResults" Relationship="covunilsdbModel.GenderResults" FromRole="Gender" ToRole="SessionResult" />
+  </EntityType>
+  <EntityType Name="IndividualSession">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClassCodeID" Type="Int32" Nullable="false" />
+    <Property Name="GenderID" Type="Int32" Nullable="false" />
+    <Property Name="AgeID" Type="Int32" Nullable="false" />
+    <Property Name="EthinicityID" Type="Int32" Nullable="false" />
+    <Property Name="VisualCount" Type="Int32" />
+    <Property Name="AuralCount" Type="Int32" />
+    <Property Name="ReadWriteCount" Type="Int32" />
+    <Property Name="KineastheticCount" Type="Int32" />
+    <NavigationProperty Name="Age" Relationship="covunilsdbModel.FK_IndividualSessions_Ages" FromRole="IndividualSession" ToRole="Age" />
+    <NavigationProperty Name="ClassCode" Relationship="covunilsdbModel.FK_IndividualSessions_ClassCodes" FromRole="IndividualSession" ToRole="ClassCode" />
+    <NavigationProperty Name="Ethnicity" Relationship="covunilsdbModel.FK_IndividualSessions_Ethnicities" FromRole="IndividualSession" ToRole="Ethnicity" />
+    <NavigationProperty Name="Gender" Relationship="covunilsdbModel.FK_IndividualSessions_Genders" FromRole="IndividualSession" ToRole="Gender" />
+    <NavigationProperty Name="SessionResults" Relationship="covunilsdbModel.FK_SessionResults_IndividualSessions" FromRole="IndividualSession" ToRole="SessionResult" />
+  </EntityType>
+  <EntityType Name="SessionResult">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IndividualSessionID" Type="Int32" Nullable="false" />
+    <Property Name="Results" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="VisualPercent" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
+    <Property Name="AuralPercent" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
+    <Property Name="ReadWritePercent" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
+    <Property Name="KineastheticPercent" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
+    <Property Name="Satisfied" Type="Boolean" />
+    <NavigationProperty Name="IndividualSession" Relationship="covunilsdbModel.FK_SessionResults_IndividualSessions" FromRole="SessionResult" ToRole="IndividualSession" />
+    <NavigationProperty Name="Ages" Relationship="covunilsdbModel.AgeResults" FromRole="SessionResult" ToRole="Age" />
+    <NavigationProperty Name="Ethnicities" Relationship="covunilsdbModel.EthnicityResults" FromRole="SessionResult" ToRole="Ethnicity" />
+    <NavigationProperty Name="Genders" Relationship="covunilsdbModel.GenderResults" FromRole="SessionResult" ToRole="Gender" />
+  </EntityType>
+  <Association Name="FK_IndividualSessions_Ages">
+    <End Type="covunilsdbModel.Age" Role="Age" Multiplicity="1" />
+    <End Type="covunilsdbModel.IndividualSession" Role="IndividualSession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Age">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="IndividualSession">
+        <PropertyRef Name="AgeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IndividualSessions_ClassCodes">
+    <End Type="covunilsdbModel.ClassCode" Role="ClassCode" Multiplicity="1" />
+    <End Type="covunilsdbModel.IndividualSession" Role="IndividualSession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClassCode">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="IndividualSession">
+        <PropertyRef Name="ClassCodeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IndividualSessions_Ethnicities">
+    <End Type="covunilsdbModel.Ethnicity" Role="Ethnicity" Multiplicity="1" />
+    <End Type="covunilsdbModel.IndividualSession" Role="IndividualSession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ethnicity">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="IndividualSession">
+        <PropertyRef Name="EthinicityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IndividualSessions_Genders">
+    <End Type="covunilsdbModel.Gender" Role="Gender" Multiplicity="1" />
+    <End Type="covunilsdbModel.IndividualSession" Role="IndividualSession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gender">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="IndividualSession">
+        <PropertyRef Name="GenderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SessionResults_IndividualSessions">
+    <End Type="covunilsdbModel.IndividualSession" Role="IndividualSession" Multiplicity="1" />
+    <End Type="covunilsdbModel.SessionResult" Role="SessionResult" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IndividualSession">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SessionResult">
+        <PropertyRef Name="IndividualSessionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AgeResults">
+    <End Type="covunilsdbModel.Age" Role="Age" Multiplicity="*" />
+    <End Type="covunilsdbModel.SessionResult" Role="SessionResult" Multiplicity="*" />
+  </Association>
+  <Association Name="EthnicityResults">
+    <End Type="covunilsdbModel.Ethnicity" Role="Ethnicity" Multiplicity="*" />
+    <End Type="covunilsdbModel.SessionResult" Role="SessionResult" Multiplicity="*" />
+  </Association>
+  <Association Name="GenderResults">
+    <End Type="covunilsdbModel.Gender" Role="Gender" Multiplicity="*" />
+    <End Type="covunilsdbModel.SessionResult" Role="SessionResult" Multiplicity="*" />
+  </Association>
+  <EntityType Name="LearningDifficulty">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LearningDifficulty1" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="StudentLearningDifficulties" Relationship="covunilsdbModel.FK_StudentLearningDifficulties_LearningDifficulties" FromRole="LearningDifficulty" ToRole="StudentLearningDifficulty" />
+  </EntityType>
+  <EntityType Name="StudentLearningDifficulty">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StudentID" Type="Int32" Nullable="false" />
+    <Property Name="LearningDifficultyID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="LearningDifficulty" Relationship="covunilsdbModel.FK_StudentLearningDifficulties_LearningDifficulties" FromRole="StudentLearningDifficulty" ToRole="LearningDifficulty" />
+    <NavigationProperty Name="Student" Relationship="covunilsdbModel.FK_StudentLearningDifficulties_Students" FromRole="StudentLearningDifficulty" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ClassCodeID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ClassCode" Relationship="covunilsdbModel.FK_Students_ClassCodes" FromRole="Student" ToRole="ClassCode" />
+    <NavigationProperty Name="StudentLearningDifficulties" Relationship="covunilsdbModel.FK_StudentLearningDifficulties_Students" FromRole="Student" ToRole="StudentLearningDifficulty" />
+  </EntityType>
+  <Association Name="FK_Students_ClassCodes">
+    <End Type="covunilsdbModel.ClassCode" Role="ClassCode" Multiplicity="1" />
+    <End Type="covunilsdbModel.Student" Role="Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClassCode">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="ClassCodeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentLearningDifficulties_LearningDifficulties">
+    <End Type="covunilsdbModel.LearningDifficulty" Role="LearningDifficulty" Multiplicity="1" />
+    <End Type="covunilsdbModel.StudentLearningDifficulty" Role="StudentLearningDifficulty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LearningDifficulty">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="StudentLearningDifficulty">
+        <PropertyRef Name="LearningDifficultyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentLearningDifficulties_Students">
+    <End Type="covunilsdbModel.Student" Role="Student" Multiplicity="1" />
+    <End Type="covunilsdbModel.StudentLearningDifficulty" Role="StudentLearningDifficulty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="StudentLearningDifficulty">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

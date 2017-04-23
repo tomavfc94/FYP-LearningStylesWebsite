@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=&quot;|DataDirectory|\aspnet-Coventry University Learning Styles-20170202013057.mdf&quot;;Initial Catalog=&quot;aspnet-Coventry University Learning Styles-20170202013057&quot;;Integrated Security=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\thoma\\onedrive\\documents\\visual\ studio\ 2015\\Projects\\Coventry\ University\ Learning\ Styles\\Coventry\ University\ Learning\ Styles\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+</parameters>
